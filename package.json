@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-csm-comparison",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A simple repo to demo the differences between Headless CMS's",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jacob Hebert <jacobshebert@gmail.com>",
   "dependencies": {
     "gatsby": "^3.0.1",
     "gatsby-plugin-gatsby-cloud": "^2.0.0",
@@ -12,12 +12,18 @@
     "gatsby-plugin-offline": "^4.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sharp": "^3.0.0",
+    "gatsby-remark-images": "^4.0.0",
+    "gatsby-remark-prismjs": "^4.0.0",
+    "gatsby-remark-smartypants": "^3.0.0",
+    "gatsby-source-contentful": "^5.0.3",
     "gatsby-source-filesystem": "^3.0.0",
+    "gatsby-transformer-remark": "^3.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "prettier": "2.2.1"
