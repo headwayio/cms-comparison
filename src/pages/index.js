@@ -26,10 +26,9 @@ const IndexPage = ({
           <LinkButton to={slug} text={'Go to ' + slug} /> <br /> <br />
         </>
       ))}
-      {contentfulPages?.map(({ slug }) => (
+      {contentfulPages.map(({ slug }) => (
         <>
-          <LinkButton to={`/${slug}/`} text={`Go to  /${slug}/`} /> <br />{' '}
-          <br />
+          <LinkButton to={`/${slug}/`} text={`Go to /${slug}/`} /> <br /> <br />
         </>
       ))}
     </div>

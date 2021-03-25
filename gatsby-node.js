@@ -28,7 +28,7 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const { contentfulBlogs, localBlogs } = result.data
+    const { localBlogs, contentfulBlogs } = result.data
 
     localBlogs?.nodes.forEach(post => {
       createPage({
@@ -39,6 +39,7 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+
     contentfulBlogs?.nodes.forEach(post => {
       createPage({
         path: post.slug,

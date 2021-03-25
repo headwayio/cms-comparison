@@ -911,6 +911,61 @@ type ContentfulResize {
   aspectRatio: Float
 }
 
+type ContentfulLinkButton implements ContentfulReference & ContentfulEntry & Node {
+  contentful_id: String!
+  id: ID!
+  node_locale: String!
+  to: String
+  text: String
+  spaceId: String
+  createdAt(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  updatedAt(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  sys: ContentfulLinkButtonSys
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+type ContentfulLinkButtonSys {
+  type: String
+  revision: Int
+  contentType: ContentfulLinkButtonSysContentType
+}
+
+type ContentfulLinkButtonSysContentType {
+  sys: ContentfulLinkButtonSysContentTypeSys
+}
+
+type ContentfulLinkButtonSysContentTypeSys {
+  type: String
+  linkType: String
+  id: String
+}
+
 type ContentfulBlog implements ContentfulReference & ContentfulEntry & Node {
   contentful_id: String!
   id: ID!
@@ -968,61 +1023,6 @@ type ContentfulBlogSysContentType {
 }
 
 type ContentfulBlogSysContentTypeSys {
-  type: String
-  linkType: String
-  id: String
-}
-
-type ContentfulLinkButton implements ContentfulReference & ContentfulEntry & Node {
-  contentful_id: String!
-  id: ID!
-  node_locale: String!
-  to: String
-  text: String
-  spaceId: String
-  createdAt(
-    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
-    formatString: String
-
-    # Returns a string generated with Moment.js' `fromNow` function
-    fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
-    difference: String
-
-    # Configures the locale Moment.js will use to format the date.
-    locale: String
-  ): Date
-  updatedAt(
-    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
-    formatString: String
-
-    # Returns a string generated with Moment.js' `fromNow` function
-    fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
-    difference: String
-
-    # Configures the locale Moment.js will use to format the date.
-    locale: String
-  ): Date
-  sys: ContentfulLinkButtonSys
-  parent: Node
-  children: [Node!]!
-  internal: Internal!
-}
-
-type ContentfulLinkButtonSys {
-  type: String
-  revision: Int
-  contentType: ContentfulLinkButtonSysContentType
-}
-
-type ContentfulLinkButtonSysContentType {
-  sys: ContentfulLinkButtonSysContentTypeSys
-}
-
-type ContentfulLinkButtonSysContentTypeSys {
   type: String
   linkType: String
   id: String
@@ -1208,10 +1208,10 @@ type Query {
   allContentfulEntry(filter: ContentfulEntryFilterInput, sort: ContentfulEntrySortInput, skip: Int, limit: Int): ContentfulEntryConnection!
   contentfulAsset(contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, spaceId: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, file: ContentfulAssetFileFilterInput, title: StringQueryOperatorInput, description: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, sys: ContentfulAssetSysFilterInput, fixed: ContentfulFixedFilterInput, fluid: ContentfulFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, resize: ContentfulResizeFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentfulAsset
   allContentfulAsset(filter: ContentfulAssetFilterInput, sort: ContentfulAssetSortInput, skip: Int, limit: Int): ContentfulAssetConnection!
-  contentfulBlog(contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, title: StringQueryOperatorInput, slug: StringQueryOperatorInput, body: ContentfulBlogBodyFilterInput, hero: ContentfulAssetFilterInput, spaceId: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, sys: ContentfulBlogSysFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentfulBlog
-  allContentfulBlog(filter: ContentfulBlogFilterInput, sort: ContentfulBlogSortInput, skip: Int, limit: Int): ContentfulBlogConnection!
   contentfulLinkButton(contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, to: StringQueryOperatorInput, text: StringQueryOperatorInput, spaceId: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, sys: ContentfulLinkButtonSysFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentfulLinkButton
   allContentfulLinkButton(filter: ContentfulLinkButtonFilterInput, sort: ContentfulLinkButtonSortInput, skip: Int, limit: Int): ContentfulLinkButtonConnection!
+  contentfulBlog(contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, title: StringQueryOperatorInput, slug: StringQueryOperatorInput, body: ContentfulBlogBodyFilterInput, hero: ContentfulAssetFilterInput, spaceId: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, sys: ContentfulBlogSysFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentfulBlog
+  allContentfulBlog(filter: ContentfulBlogFilterInput, sort: ContentfulBlogSortInput, skip: Int, limit: Int): ContentfulBlogConnection!
   contentfulContentType(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, name: StringQueryOperatorInput, displayField: StringQueryOperatorInput, description: StringQueryOperatorInput, sys: ContentfulContentTypeSysFilterInput): ContentfulContentType
   allContentfulContentType(filter: ContentfulContentTypeFilterInput, sort: ContentfulContentTypeSortInput, skip: Int, limit: Int): ContentfulContentTypeConnection!
   siteBuildMetadata(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, buildTime: DateQueryOperatorInput): SiteBuildMetadata
@@ -3149,13 +3149,145 @@ input ContentfulAssetSortInput {
   order: [SortOrderEnum] = [ASC]
 }
 
-input ContentfulBlogBodyFilterInput {
-  raw: StringQueryOperatorInput
-  references: ContentfulLinkButtonFilterListInput
+input ContentfulLinkButtonSysFilterInput {
+  type: StringQueryOperatorInput
+  revision: IntQueryOperatorInput
+  contentType: ContentfulLinkButtonSysContentTypeFilterInput
 }
 
-input ContentfulLinkButtonFilterListInput {
-  elemMatch: ContentfulLinkButtonFilterInput
+input ContentfulLinkButtonSysContentTypeFilterInput {
+  sys: ContentfulLinkButtonSysContentTypeSysFilterInput
+}
+
+input ContentfulLinkButtonSysContentTypeSysFilterInput {
+  type: StringQueryOperatorInput
+  linkType: StringQueryOperatorInput
+  id: StringQueryOperatorInput
+}
+
+type ContentfulLinkButtonConnection {
+  totalCount: Int!
+  edges: [ContentfulLinkButtonEdge!]!
+  nodes: [ContentfulLinkButton!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentfulLinkButtonFieldsEnum!): [String!]!
+  group(skip: Int, limit: Int, field: ContentfulLinkButtonFieldsEnum!): [ContentfulLinkButtonGroupConnection!]!
+}
+
+type ContentfulLinkButtonEdge {
+  next: ContentfulLinkButton
+  node: ContentfulLinkButton!
+  previous: ContentfulLinkButton
+}
+
+enum ContentfulLinkButtonFieldsEnum {
+  contentful_id
+  id
+  node_locale
+  to
+  text
+  spaceId
+  createdAt
+  updatedAt
+  sys___type
+  sys___revision
+  sys___contentType___sys___type
+  sys___contentType___sys___linkType
+  sys___contentType___sys___id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+}
+
+type ContentfulLinkButtonGroupConnection {
+  totalCount: Int!
+  edges: [ContentfulLinkButtonEdge!]!
+  nodes: [ContentfulLinkButton!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
 }
 
 input ContentfulLinkButtonFilterInput {
@@ -3173,20 +3305,18 @@ input ContentfulLinkButtonFilterInput {
   internal: InternalFilterInput
 }
 
-input ContentfulLinkButtonSysFilterInput {
-  type: StringQueryOperatorInput
-  revision: IntQueryOperatorInput
-  contentType: ContentfulLinkButtonSysContentTypeFilterInput
+input ContentfulLinkButtonSortInput {
+  fields: [ContentfulLinkButtonFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
 }
 
-input ContentfulLinkButtonSysContentTypeFilterInput {
-  sys: ContentfulLinkButtonSysContentTypeSysFilterInput
+input ContentfulBlogBodyFilterInput {
+  raw: StringQueryOperatorInput
+  references: ContentfulLinkButtonFilterListInput
 }
 
-input ContentfulLinkButtonSysContentTypeSysFilterInput {
-  type: StringQueryOperatorInput
-  linkType: StringQueryOperatorInput
-  id: StringQueryOperatorInput
+input ContentfulLinkButtonFilterListInput {
+  elemMatch: ContentfulLinkButtonFilterInput
 }
 
 input ContentfulBlogSysFilterInput {
@@ -3449,136 +3579,6 @@ input ContentfulBlogFilterInput {
 
 input ContentfulBlogSortInput {
   fields: [ContentfulBlogFieldsEnum]
-  order: [SortOrderEnum] = [ASC]
-}
-
-type ContentfulLinkButtonConnection {
-  totalCount: Int!
-  edges: [ContentfulLinkButtonEdge!]!
-  nodes: [ContentfulLinkButton!]!
-  pageInfo: PageInfo!
-  distinct(field: ContentfulLinkButtonFieldsEnum!): [String!]!
-  group(skip: Int, limit: Int, field: ContentfulLinkButtonFieldsEnum!): [ContentfulLinkButtonGroupConnection!]!
-}
-
-type ContentfulLinkButtonEdge {
-  next: ContentfulLinkButton
-  node: ContentfulLinkButton!
-  previous: ContentfulLinkButton
-}
-
-enum ContentfulLinkButtonFieldsEnum {
-  contentful_id
-  id
-  node_locale
-  to
-  text
-  spaceId
-  createdAt
-  updatedAt
-  sys___type
-  sys___revision
-  sys___contentType___sys___type
-  sys___contentType___sys___linkType
-  sys___contentType___sys___id
-  parent___id
-  parent___parent___id
-  parent___parent___parent___id
-  parent___parent___parent___children
-  parent___parent___children
-  parent___parent___children___id
-  parent___parent___children___children
-  parent___parent___internal___content
-  parent___parent___internal___contentDigest
-  parent___parent___internal___description
-  parent___parent___internal___fieldOwners
-  parent___parent___internal___ignoreType
-  parent___parent___internal___mediaType
-  parent___parent___internal___owner
-  parent___parent___internal___type
-  parent___children
-  parent___children___id
-  parent___children___parent___id
-  parent___children___parent___children
-  parent___children___children
-  parent___children___children___id
-  parent___children___children___children
-  parent___children___internal___content
-  parent___children___internal___contentDigest
-  parent___children___internal___description
-  parent___children___internal___fieldOwners
-  parent___children___internal___ignoreType
-  parent___children___internal___mediaType
-  parent___children___internal___owner
-  parent___children___internal___type
-  parent___internal___content
-  parent___internal___contentDigest
-  parent___internal___description
-  parent___internal___fieldOwners
-  parent___internal___ignoreType
-  parent___internal___mediaType
-  parent___internal___owner
-  parent___internal___type
-  children
-  children___id
-  children___parent___id
-  children___parent___parent___id
-  children___parent___parent___children
-  children___parent___children
-  children___parent___children___id
-  children___parent___children___children
-  children___parent___internal___content
-  children___parent___internal___contentDigest
-  children___parent___internal___description
-  children___parent___internal___fieldOwners
-  children___parent___internal___ignoreType
-  children___parent___internal___mediaType
-  children___parent___internal___owner
-  children___parent___internal___type
-  children___children
-  children___children___id
-  children___children___parent___id
-  children___children___parent___children
-  children___children___children
-  children___children___children___id
-  children___children___children___children
-  children___children___internal___content
-  children___children___internal___contentDigest
-  children___children___internal___description
-  children___children___internal___fieldOwners
-  children___children___internal___ignoreType
-  children___children___internal___mediaType
-  children___children___internal___owner
-  children___children___internal___type
-  children___internal___content
-  children___internal___contentDigest
-  children___internal___description
-  children___internal___fieldOwners
-  children___internal___ignoreType
-  children___internal___mediaType
-  children___internal___owner
-  children___internal___type
-  internal___content
-  internal___contentDigest
-  internal___description
-  internal___fieldOwners
-  internal___ignoreType
-  internal___mediaType
-  internal___owner
-  internal___type
-}
-
-type ContentfulLinkButtonGroupConnection {
-  totalCount: Int!
-  edges: [ContentfulLinkButtonEdge!]!
-  nodes: [ContentfulLinkButton!]!
-  pageInfo: PageInfo!
-  field: String!
-  fieldValue: String
-}
-
-input ContentfulLinkButtonSortInput {
-  fields: [ContentfulLinkButtonFieldsEnum]
   order: [SortOrderEnum] = [ASC]
 }
 
