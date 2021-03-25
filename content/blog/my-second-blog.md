@@ -1,23 +1,23 @@
 ---
 title: My second blog
-date: "2021-02-05T22:12:03.284Z"
+date: 2021-02-05T22:12:03.284Z
 hero: "../../src/images/this-is-my-second-blog.jpg"
-description: "So I just writehere and it's a blog?."
----
+description: So I just writehere and it's a blog?.
 
-#  My second blog
+---
+# My second blog
 
 ## Manifesta restitit fugae subiere Perseus causa
 
-Lorem markdownum parva aquae tuus. Ut animos rudis erat Numitorque unguis
-corpus.
+#### Lorem markdownum parva aquae tuus. Ut animos rudis erat Numitorque unguis corpus.
 
-1. Quoque est
-2. Veri ubi neque postquam movere anguem
-3. Tetigere mora siquidem Haemonii nocuisse vivere Albanos
-4. Illa hominum tinxit
-5. Cuique vale
-6. Iterum in refugit manuque cruore Ausoniae exclamat
+Quoque est
+
+1. Veri ubi neque postquam movere anguem
+2. Tetigere mora siquidem Haemonii nocuisse vivere Albanos
+3. Illa hominum tinxit
+4. Cuique vale
+5. Iterum in refugit manuque cruore Ausoniae exclamat
 
 Operum et mirum submisit, Aurora deteriorque clamat Macareu, fitque. Potestas in
 eandem penates, dixit. Creatis manibusque, tela vultu nec vidit flamma eminus
@@ -41,7 +41,7 @@ Ripis sub excussit tamen **torpetis nodosque moratum** armisque vetuere
 parenti Iuppiter habebas. Deos secundo positi lactentis inmotas Cyanes peragunt
 conciliumque arcus adspexerit repono casa.
 
-Prodit *formae quin* auro gravis ad Phoebus doli, longo aras patriam auro
+Prodit _formae quin_ auro gravis ad Phoebus doli, longo aras patriam auro
 uterque dedit. Versat reicerer se colla est ascensu!
 
     var arpWebTape = intellectualRipcording;
