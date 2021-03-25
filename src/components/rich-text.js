@@ -19,51 +19,6 @@ const getRenderOptions = references => {
 
   return {
     renderNode: {
-      // [BLOCKS.PARAGRAPH]: (_, children) => {
-      //   return (
-      //     <Typography color="textSecondary" style={{ marginTop: '1rem' }}>
-      //       {children}
-      //     </Typography>
-      //   )
-      // },
-      // [BLOCKS.HEADING_1]: (_, children) => (
-      //   <Typography color="textSecondary" variant="h1">
-      //     {children}
-      //   </Typography>
-      // ),
-      // [BLOCKS.HEADING_2]: (_, children) => (
-      //   <Typography
-      //     color="textSecondary"
-      //     variant="h2"
-      //     style={{ marginTop: '2rem' }}
-      //   >
-      //     {children}
-      //   </Typography>
-      // ),
-      // [BLOCKS.HEADING_3]: (_, children) => (
-      //   <Typography
-      //     color="textSecondary"
-      //     variant="h3"
-      //     style={{ marginTop: '1rem' }}
-      //   >
-      //     {children}
-      //   </Typography>
-      // ),
-      // [BLOCKS.HEADING_4]: (_, children) => (
-      //   <Typography color="textSecondary" variant="h4">
-      //     {children}
-      //   </Typography>
-      // ),
-      // [BLOCKS.HEADING_5]: (_, children) => (
-      //   <Typography color="textSecondary" variant="h5">
-      //     {children}
-      //   </Typography>
-      // ),
-      // [BLOCKS.HEADING_6]: (_, children) => (
-      //   <Typography color="textSecondary" variant="h6">
-      //     {children}
-      //   </Typography>
-      // ),
       [BLOCKS.EMBEDDED_ENTRY]: node => {
         const id = node?.data?.target?.sys?.id
         const props = referenceById.get(id)

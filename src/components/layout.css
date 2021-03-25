@@ -20,6 +20,18 @@ body {
   -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   font-feature-settings: 'kern', 'liga', 'clig', 'calt';
 }
+.linkbutton {
+  border: 1px;
+  border-radius: 2;
+  padding: 5;
+  margin-bottom: '1rem';
+  background-color: 'white';
+  color: 'black';
+  '&:hover': {
+    background-color: '#32aab7';
+    color: 'white';
+  }
+}
 article,
 aside,
 details,
