@@ -6,17 +6,19 @@
   "author": "Jacob Hebert <jacobshebert@gmail.com>",
   "dependencies": {
     "gatsby": "^3.0.1",
+    "gatsby-plugin-extract-schema": "^0.1.0",
     "gatsby-plugin-gatsby-cloud": "^2.0.0",
     "gatsby-plugin-image": "^1.0.0",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-offline": "^4.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^3.0.0",
     "gatsby-remark-images": "^4.0.0",
-    "gatsby-remark-prismjs": "^4.0.0",
     "gatsby-remark-smartypants": "^3.0.0",
-    "gatsby-source-contentful": "^5.0.3",
+    "gatsby-source-contentful": "^5.1.2",
     "gatsby-source-filesystem": "^3.0.0",
+    "gatsby-transformer-inline-svg": "^0.1.0",
     "gatsby-transformer-remark": "^3.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
     "prop-types": "^15.7.2",
@@ -26,7 +28,15 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "prettier": "2.2.1"
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-remove-graphql-queries": "^3.0.0",
+    "babel-preset-gatsby": "^1.0.0",
+    "eslint": "^7.21.0",
+    "eslint-plugin-graphql": "^4.0.0",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1"
   },
   "keywords": [
     "gatsby"
